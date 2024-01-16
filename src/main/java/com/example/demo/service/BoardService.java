@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.dto.BoardDTO;
 import com.example.demo.entity.Board;
 
@@ -8,7 +10,11 @@ public interface BoardService {
 	//게시물 등록
 	int register(BoardDTO dto);
 	
+	//게시물 목록조회
+	List<BoardDTO> getList();
+	
 	//dto를 엔티티로 변환하는 메소드
+	//디폴트 접근제어자를 쓰면 인터페이스에서도 일반메소드를 이용할 수 있음.
 	default Board dtoToEntity(BoardDTO dto) {
 		
 		Board entity = Board.builder()
@@ -18,5 +24,19 @@ public interface BoardService {
 						.writer(dto.getWriter())
 						.build();
 		return entity;
+	}
+	
+	//엔티티를 dto로 변환하는 메소드
+	default BoardDTO entityToDto(Board entity) {
+		
+		BoardDTO dto = BoardDTO.builder()
+						.no(entity.getNo())
+						.title(entity.getTitle())
+						.content(entity.getContent())
+						.writer(entity.getWriter())
+						.regDate(entity.getRegDate())
+						.modDate(entity.getModDate())
+						.build();
+		return dto;
 	}
 }
