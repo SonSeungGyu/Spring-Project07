@@ -36,4 +36,20 @@ public class BoardServiceTest {
 		}
 	}
 	
+	@Test
+	public void 게시물단건조회() {
+		BoardDTO dto = service.read(2);
+		System.out.println(dto);
+	}
+	
+	
+	@Test
+	public void 게시물수정() {
+		//게시물을 조회하기 위해선 db에서 데이터를 읽어와야 하므로 dto로 변환해주어야 함
+		BoardDTO dto = service.read(4); 
+		dto.setContent("수정");
+		dto.setTitle("내용도 수정");
+		service.modify(dto);
+		System.out.println(dto);
+	}
 }
