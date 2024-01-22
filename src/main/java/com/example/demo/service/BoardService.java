@@ -19,6 +19,9 @@ public interface BoardService {
 	//게시물 수정
 	void modify(BoardDTO dto);
 	
+	//게시물 삭제
+	int remove(int no);
+	
 	//dto를 엔티티로 변환하는 메소드
 	//디폴트 접근제어자를 쓰면 인터페이스에서도 일반메소드를 이용할 수 있음.
 	default Board dtoToEntity(BoardDTO dto) {

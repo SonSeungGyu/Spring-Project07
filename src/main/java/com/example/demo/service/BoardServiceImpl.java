@@ -76,5 +76,18 @@ public class BoardServiceImpl implements BoardService {
 			repository.save(entity);
 		}
 	}
+	
+	//게시물 삭제
+	@Override
+	public int remove(int no) {
+		
+		Optional<Board> result = repository.findById(no);
+		if(result.isPresent()) {
+			repository.deleteById(no);
+			return 1;//성공
+		}else {
+			return 0;//실패
+		}
+	}
 
 }

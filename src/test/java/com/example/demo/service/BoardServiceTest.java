@@ -52,4 +52,10 @@ public class BoardServiceTest {
 		service.modify(dto);
 		System.out.println(dto);
 	}
+	
+	@Test
+	public void 게시물삭제() {
+		int result = service.remove(2);
+		System.out.println(result);
+	}
 }
